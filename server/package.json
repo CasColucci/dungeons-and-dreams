@@ -1,0 +1,22 @@
+{
+  "name": "server",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/CasColucci/dungeons-and-dreams.git"
+  },
+  "author": "Cas Colucci",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/CasColucci/dungeons-and-dreams/issues"
+  },
+  "homepage": "https://github.com/CasColucci/dungeons-and-dreams#readme",
+  "dependencies": {
+    "ws": "^8.0.0"
+  }
+}

@@ -14,3 +14,5 @@ I don't quite know yet. I have specific ideas in mind for a D&D tool for DM's an
 
 # You aren't using/doing this right
 Probably not. I have very little experience with Github outside of private repositories for little projects or school-related tasks and a hundred articles or videos on the subject as well as tons of lurking along the edges of other repos. A lot of things here seem to come just from experience, and, like how it's hard to explain to someone playing a multiplayer game for the first time all the shorthand used or taboo tactics, I simply am not there yet. I'm trying, and any suggestions would be much appreciated. 
+
+Oh and if you mean tech-wise, also probably not. I have a lot of schooling experience but my practical experience is a bit lacking. I try to keep on top of doing things right but undoubtedly I'll do it wrong from time to time. Also feel free to correct me (nicely, if you can manage)
