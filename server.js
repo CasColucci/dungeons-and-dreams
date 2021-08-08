@@ -13,7 +13,15 @@ app.use(express.static(path.join(__dirname, "public")));
 // start the server
 server.listen(PORT, () => console.log(`Server running on port ${PORT}`));
 
+var connections = new Array();
+
 // demo of handling a socket connection request from the client
 io.on("connection", (socket) => {
   console.log("New WS Connection");
 });
+
+/*
+  Good morning, me. Today's tasks for this file: 
+
+    Make a basic game of some kind, like a maze or something, where multiple users get to put stuff in 
+*/
