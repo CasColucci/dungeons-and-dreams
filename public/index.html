@@ -5,16 +5,38 @@
 <head>
     <script src="/socket.io/socket.io.js"></script>
     <script defer src="app.js"></script>
+    <script language="javascript">
+        function showcreateroom() {
+            document.getElementById('createroom').style.display = "block";
+            document.getElementById('joinroom').style.display = "none";
+        }
+
+        function showjoinroom() {
+            document.getElementById('joinroom').style.display = "block";
+            document.getElementById('createroom').style.display = "none";
+        }
+    </script>
 </head>
 
 <body>
-    <ul>
-
-    </ul>
     <form>
-        <input placeholder="Input your name" id="user" name="user" autocomplete="off">
-        <input type="submit" value="Submit">
+        <button onclick="showjoinroom()">Join Room</button><br>
+        <button onclick="showcreateroom()">Create Room</button>
     </form>
+    <div id="joinroom" name="joinroom">
+        <h1>Join Room</h1>
+        <form>
+            <input placeholder="Room ID"><br>
+            <input placeholder="Your Name">
+        </form>
+    </div>
+    <div id="createroom" name="createroom">
+        <h1>Create Room</h1>
+        <form>
+            <input placeholder="Your Name"><br>
+            <input placeholder="Room Name">
+        </form>
+    </div>
 </body>
 
 </html>
