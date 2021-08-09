@@ -13,10 +13,41 @@ app.use(express.static(path.join(__dirname, "public")));
 // start the server
 server.listen(PORT, () => console.log(`Server running on port ${PORT}`));
 
-var connections = new Array();
+let users = [];
+let characters = [];
 
 // demo of handling a socket connection request from the client
-io.on("connection", (socket) => {});
+io.on("connection", (socket) => {
+  socket.on("join server", (username) => {
+    const user = {
+      username,
+      id: socket.id,
+    };
+    users.push(user);
+    io.emit("new user", users);
+  });
+
+  // interesting thing to note; a function can be passed from the client to this function and then used if needed
+  socket.on("join room", (roomname) => {
+    socket.join(roomname);
+  });
+
+  socket.on("add character", (character, user) => {
+    characters.push(character);
+  });
+
+  socket.on("remove character", (character) => {
+    for (var i = 0; i < characters.length; i++) {
+      if (characters[i] === character) {
+        characters.splice(i, 1);
+        i = characters.length;
+      }
+    }
+  });
+});
+
+// functions needed:
+// pass in room name and maybe password?
 
 /*
   - http name and room input, either join room or make a new room
