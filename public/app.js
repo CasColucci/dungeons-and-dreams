@@ -1,1 +1,1 @@
-const socket = io();
+import React, { useState, useRef, useEffect } from "react";

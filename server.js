@@ -34,20 +34,32 @@ io.on("connection", (socket) => {
 
   socket.on("add character", (character, user) => {
     characters.push(character);
+    io.emit("init adjusted", characters);
   });
 
+  // will need to be edited in order to allow for characters with the same name to be differentiated
   socket.on("remove character", (character) => {
     for (var i = 0; i < characters.length; i++) {
       if (characters[i] === character) {
         characters.splice(i, 1);
+        io.emit("init adjusted", characters);
         i = characters.length;
       }
     }
   });
+
+  socket.on("disconnect", () => {
+    users = users.filter((u) => u.id !== socket.id);
+    io.emit("new user", users);
+  });
 });
 
-// functions needed:
-// pass in room name and maybe password?
+/*
+  Note to self about the function of characters (and to change the name):
+  Should create a specific variable within this variable to keep track of the index
+  this way it can be used as an id number and we don't have to call a for loop to remove 
+  the specific character we want. 
+*/
 
 /*
   - http name and room input, either join room or make a new room
