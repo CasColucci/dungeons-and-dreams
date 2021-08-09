@@ -19,18 +19,18 @@
 </head>
 
 <body>
-    <form>
-        <button onclick="showjoinroom()">Join Room</button><br>
-        <button onclick="showcreateroom()">Create Room</button>
-    </form>
-    <div id="joinroom" name="joinroom">
+
+    <button onclick="showjoinroom()">Join Room</button><br>
+    <button onclick="showcreateroom()">Create Room</button>
+
+    <div id="joinroom" name="joinroom" style="display:none">
         <h1>Join Room</h1>
         <form>
             <input placeholder="Room ID"><br>
             <input placeholder="Your Name">
         </form>
     </div>
-    <div id="createroom" name="createroom">
+    <div id="createroom" name="createroom" style="display:none">
         <h1>Create Room</h1>
         <form>
             <input placeholder="Your Name"><br>
