@@ -44,3 +44,12 @@ Well I'm glad you asked!
     * More expanded upon character sheet for the players
     * Pictures (of NPC's, locations, relics, etc)
     * Character inventories
+
+# My notes for the specific things I want right now
+* alert for when a new user enters the room that fades after a few seconds
+* allow the players to put in a character into the list. More than one possible but in the future the DM should be able to edit/restrict this
+* all users are shown in a list somewhere
+* DM given the ability to "start" the encounter after entering the desired characters/enemies
+* DM can edit the list during the encounter
+* DM can input the initiatives and they will be ordered based on this, but the DM can also edit the list regardless of the initiative after inputting the number
+* iterate forward and back during the encounter as the DM chooses
