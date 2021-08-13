@@ -11,6 +11,8 @@ function App() {
   const socketref = useRef();
 
   let body;
+  function addcharacter() {}
+
   if (connected) {
     body = <userlist user={user} users={users} />;
   } else {

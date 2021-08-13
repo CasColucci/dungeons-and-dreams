@@ -24,7 +24,7 @@ io.on("connection", (socket) => {
       id: socket.id,
     };
     users.push(user);
-    io.emit("new user", users);
+    io.emit("user display", users);
   });
 
   // interesting thing to note; a function can be passed from the client to this function and then used if needed
@@ -50,7 +50,7 @@ io.on("connection", (socket) => {
 
   socket.on("disconnect", () => {
     users = users.filter((u) => u.id !== socket.id);
-    io.emit("new user", users);
+    io.emit("user display", users);
   });
 });
 
