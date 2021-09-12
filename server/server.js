@@ -27,8 +27,6 @@ io.on("connection", (socket) => {
   socket.on("joinRoom", handleJoinRoom);
   let users = [];
 
-  socket.on("disconnect", (socket) => console.log("User disconnected"));
-
   function handleNewRoom(user) {
     let roomId = makeid(5);
     socketRooms[socket.id] = roomId;
