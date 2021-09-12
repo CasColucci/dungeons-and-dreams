@@ -30,16 +30,19 @@ io.on("connection", (socket) => {
   socket.on("disconnect", (socket) => console.log("User disconnected"));
 
   function handleNewRoom(user) {
-    let roomName = makeid(5);
-    socketRooms[socket.id] = roomName;
-    socket.emit("roomId", roomName);
-    socket.join(roomName);
+    let roomId = makeid(5);
+    socketRooms[socket.id] = roomId;
+    users.push(user);
+    console.log(users);
+    console.log(user);
+    emitAllUsers(roomId);
+    socket.emit("roomId", roomId);
+    socket.join(roomId);
     socket.number = 1;
     socket.emit("init", 1);
-    users.push(user);
   }
 
-  function handleJoinRoom(roomId, user) {
+  function handleJoinRoom(roomId) {
     const room = io.sockets.adapter.rooms[roomId];
     let allUsers;
     if (room) {
@@ -59,9 +62,8 @@ io.on("connection", (socket) => {
     socket.number = 2;
     socket.emit("init", 2);
     socket.emit("roomId", roomId);
-    users.push(user);
-    emitAllUsers(roomId);
   }
+
   function emitAllUsers(roomName) {
     io.sockets.in(roomName).emit("updateUsers", users);
   }
