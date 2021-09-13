@@ -35,6 +35,7 @@ io.on("connection", (socket) => {
     socket.number = 1;
     socket.emit("init", 1);
     const room = io.sockets.adapter.rooms[roomId];
+    console.log(room);
     if (room) {
       console.log("I definitely exist");
     }
