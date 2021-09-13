@@ -27,17 +27,17 @@ io.on("connection", (socket) => {
   socket.on("joinRoom", handleJoinRoom);
   let users = [];
 
-  function handleNewRoom(user) {
+  function handleNewRoom() {
     let roomId = makeid(5);
-    socketRooms[socket.id] = roomId;
-    users.push(user);
-    console.log(users);
-    console.log(user);
-    emitAllUsers(roomId);
-    socket.emit("roomId", roomId);
     socket.join(roomId);
+    socketRooms[socket.id] = roomId;
+    socket.emit("roomId", roomId);
     socket.number = 1;
     socket.emit("init", 1);
+    const room = io.sockets.adapter.rooms[roomId];
+    if (room) {
+      console.log("I definitely exist");
+    }
   }
 
   function handleJoinRoom(roomId) {
@@ -45,8 +45,10 @@ io.on("connection", (socket) => {
     let allUsers;
     if (room) {
       allUsers = room.sockets;
+      console.log("I'm here");
     }
-
+    console.log(allUsers);
+    console.log(roomId);
     let numSockets = 0;
     if (allUsers) {
       numSockets = Object.keys(allUsers).length;
@@ -60,9 +62,5 @@ io.on("connection", (socket) => {
     socket.number = 2;
     socket.emit("init", 2);
     socket.emit("roomId", roomId);
-  }
-
-  function emitAllUsers(roomName) {
-    io.sockets.in(roomName).emit("updateUsers", users);
   }
 });

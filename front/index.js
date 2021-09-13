@@ -8,6 +8,7 @@ const roomScreen = document.getElementById("roomScreen");
 const initialScreen = document.getElementById("initialScreen");
 const roomIdDisplay = document.getElementById("roomIdDisplay");
 const userIdDisplay = document.getElementById("userIdDisplay");
+
 const dmName = document.getElementById("dmName");
 const userName = document.getElementById("userName");
 
@@ -16,6 +17,7 @@ joinBtn.addEventListener("click", joinRoom);
 
 socket.on("init", handleInit);
 socket.on("roomId", handleRoomId);
+socket.on("unknownRoom", handleUnknownRoom);
 
 let userNumber;
 
@@ -28,18 +30,24 @@ function newRoom() {
 
 function joinRoom() {
   if (userName.value.length > 0) {
-    const code = roomIdInput.value;
-    socket.emit("joinRoom", code, userName);
+    const roomId = roomIdInput.value;
+    console.log(roomId);
+    socket.emit("joinRoom", roomId);
     setup();
   }
+}
+
+function handleUnknownRoom() {
+  reset();
+  alert("Unknown room code");
 }
 
 function handleInit(number) {
   userNumber = number;
 }
+
 function handleRoomId(roomId) {
   roomIdDisplay.innerText = roomId;
-  socket.emit("emitAllUsers", roomId);
 }
 
 function setup() {
@@ -47,6 +55,10 @@ function setup() {
   roomScreen.style.display = "block";
 }
 
-function updateUsers(users) {
-  userIdDisplay.innerText = users;
+function reset() {
+  userNumber = null;
+  roomIdInput.value = "";
+  roomIdDisplay.innerText = "";
+  initialScreen.style.display = "block";
+  roomScreen.style.display = "none";
 }
