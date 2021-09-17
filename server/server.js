@@ -8,7 +8,9 @@ const io = new Server(server);
 
 // pull the function that randomly generates an ID
 const { makeid } = require("./utils");
+const { type } = require("os");
 
+const state = {};
 // set a variable with all the rooms
 const socketRooms = {};
 
@@ -28,7 +30,11 @@ io.on("connection", (socket) => {
   let users = [];
 
   function handleNewRoom() {
-    let roomId = makeid(5);
+    var roomId = "";
+    console.log(type(roomId));
+    roomId = makeid(5);
+    String(roomId);
+    console.log(type(roomId));
     socket.join(roomId);
     socketRooms[socket.id] = roomId;
     socket.emit("roomId", roomId);
