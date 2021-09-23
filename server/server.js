@@ -23,22 +23,28 @@ server.listen(PORT, () => console.log(`Server running on port ${PORT}`));
 
 // on a new connection to the main server
 io.on("connection", (socket) => {
+  let users = [];
+
   console.log("User has connected");
   socket.on("newRoom", handleNewRoom);
   socket.on("joinRoom", handleJoinRoom);
+  socket.on("updateUsers", handleUpdateUsers);
 
-  function handleNewRoom() {
+  function handleNewRoom(dmName) {
+    users.push(dmName);
     let roomId = makeid(5);
     socket.join(roomId);
     socketRooms[socket.id] = roomId;
     socket.emit("roomId", roomId);
     socket.emit("init", 1);
+
+    return roomId;
   }
 
-  function handleJoinRoom(roomId) {
+  function handleJoinRoom(roomId, userName) {
     const room = io.sockets.adapter.rooms.has(roomId);
-    let allUsers;
     if (room) {
+      users.push(userName);
       socket.join(roomId);
       socketRooms[socket.id] = roomId;
       socket.emit("init", 2);
@@ -47,5 +53,9 @@ io.on("connection", (socket) => {
       socket.emit("unknownRoom");
       return;
     }
+  }
+
+  function handleUpdateUsers(roomId) {
+    socket.to(roomId).emit("userList", users);
   }
 });
