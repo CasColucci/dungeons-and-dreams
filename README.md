@@ -1,25 +1,24 @@
 # Dungeons and Dreams
-Some kind of dungeons and dragons tool, potentially. I'm not completely sure what this is or what it will be but with any luck it'll be something nice. 
+A dungeons and dragons tool, at the base to be an initiative tracker but striving towards a more complex DM tool. 
 
 # What is this?
-Itending for it to be a web-based dungeons and dragons tool. I envision something that can allow the DM to share specific things with their players, and allow the players to respond (whether this be questions, messages to individual players, puzzles, or maps)
+Intending for it to be a web-based dungeons and dragons tool. I envision something that can allow the DM to share specific things with their players, and allow the players to respond (whether this be questions, messages to individual players, puzzles, or maps)
 
 Right now, though, it's just me messing around with websockets and trying to veeeeeery carefully put everything together without messing up. This is a secondary project that I like tinkering with when I don't have any other projects I'm focused on. 
 
 # Who are you? 
-Cas, though I also go by Mellow online at times. I'm a 24 year old CS grad that's trying to dip into OSS more fully. I've messed around with stuff privately and for individual projects, but actual big-kid stuff is new to me. I decided, though, I need to stress myself out less, so I wanted to start a project that feels fun for me. 
+Cassia, or Cas, though I also go by Mellow online at times. I'm a 24 year old CS grad that's trying to dip into OSS more fully. I've messed around with stuff privately and for individual projects, but actual big-kid public stuff is new to me. I decided, though, I need to stress myself out less, so I wanted to mess with a project that feels fun for me. 
 
 # What are you doing next?
 Well I'm glad you asked!
 
-* Wanna set up actual working websockets and do it correctly so I don't want to cry later over this
 * For now, since I don't want to put any user authentication in right off the bat, I'd want the DM and players to access a private room a la Jackbox-style
-    * Someone would designate themselves DM
-    * Everyone else, as players, inputs their names (probably character names but they can do as they like)
+    * The first user is designated as the DM
+    * Everyone else are designated as players
 * I would like the DM to have access to certain functions
     * The easiest and most basic would be an initiative tracker
         * DM can set players and enemies, put them in order, and then rotate through the list repeatedly
-        * This can possibly include things like HP and statuses
+        * This can possibly include things like HP and status ailments
         * Also a possibility; dice rolls included
     * Puzzles - My big goal would be a library of puzzles for DM's to use (or add) as they want
         * Mazes
@@ -28,7 +27,7 @@ Well I'm glad you asked!
         * Toggle puzzle
         * etc...
     * Some kind of character info tracker
-        * Very basic since, without user profiles, this would be erased
+        * Very basic since, without user profiles, this would be erased after each session
         * HP, attacks, stats, etc
         * For ease of access/rolling
 * If I get past that last bullet point, I'd add a user feature, which also expands what features can be offered
